@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Expiry Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Certificate Expiry Checker</h1>
+        <input type="text" id="domain" placeholder="Enter domain name">
+        <button onclick="checkExpiry()">Check Expiry</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        async function checkExpiry() {
+            const domain = document.getElementById('domain').value;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Checking...';
+
+            try {
+                const response = await fetch(`/api/cert-expiry?domain=${domain}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    resultDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+                } else {
+                    resultDiv.innerHTML = `<p>Domain: ${data.domain}</p><p>Expiry Date: ${new Date(data.expiryDate).toLocaleString()}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p style="color: red;">An error occurred: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
