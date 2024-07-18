@@ -1,16 +1,18 @@
 {
   "name": "cert-checker",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "A simple web application to check SSL certificate expiration dates.",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "express": "^4.19.2",
-    "node-fetch": "^3.3.2"
-  }
+    "express": "^4.17.1",
+    "tls": "0.0.1"
+  },
+  "engines": {
+    "node": ">=12.x"
+  },
+  "author": "Rajat",
+  "license": "MIT"
 }
