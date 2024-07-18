@@ -7,8 +7,9 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "tls": "0.0.1"
+    "express": "^4.19.2",
+    "tls": "0.0.1",
+    "url": "^0.11.3"
   },
   "engines": {
     "node": ">=12.x"

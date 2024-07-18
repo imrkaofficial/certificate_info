@@ -1,11 +1,12 @@
 const express = require('express');
 const tls = require('tls');
-const url = require('url');
+const { URL } = require('url');
 
 const app = express();
 const port = 3000;
 
 app.use(express.static('public'));
+app.use('/static', express.static('static'));
 
 app.get('/api/cert-expiry', async (req, res) => {
     const { domain } = req.query;
