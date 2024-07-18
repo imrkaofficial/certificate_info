@@ -78,6 +78,8 @@ This project is a simple web application that allows users to check the expirati
         "error": "An error occurred while fetching the certificate"
     }
 
+![Demo Image](/static/demo.png)
+
 # License
 
 This project is licensed under the [MIT License](/LICENSE).
